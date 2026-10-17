@@ -102,13 +102,7 @@ const studentData = {
             ],
             documents: [],
             certificates: [],
-            downloads: [
-                { 
-                    title: "Semester 5 Test Download", 
-                    description: "This is a temporary test resource for the Downloads section.", 
-                    file: "#" 
-                }
-            ]
+            downloads: []
         },
 
         6: {
@@ -1083,48 +1077,6 @@ if (documentsCard) {
             <div class="document-list">
 
 
-                <!-- RESULTS -->
-                <div class="document-item">
-
-                    <div class="document-item-main">
-
-                        <div class="document-icon document-blue">
-                            📊
-                        </div>
-
-                        <div class="document-item-content">
-
-                            <h4>Results</h4>
-
-                            <p>
-                                Check your semester examination results.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <div class="document-item-actions">
-
-                        <a href="#"
-                           class="document-action-btn document-free-btn">
-                            Check Result
-                        </a>
-
-                        <a href="https://wa.me/?text=${encodeURIComponent(
-                            `Hi StudentEase, I need help checking my semester result.`
-                        )}"
-                           class="document-action-btn document-paid-btn"
-                           target="_blank"
-                           rel="noopener">
-                            Get It Done — ₹50
-                        </a>
-
-                    </div>
-
-                </div>
-
-
                 <!-- MARKSHEET -->
                 <div class="document-item">
 
@@ -1148,9 +1100,9 @@ if (documentsCard) {
 
                     <div class="document-item-actions">
 
-                        <a href="#"
+                        <a href="https://lu.indiaexaminfo.co.in/result_patliputra.aspx"
                            class="document-action-btn document-free-btn">
-                            Login & Download
+                            View / Download
                         </a>
 
                         <a href="https://wa.me/?text=${encodeURIComponent(
