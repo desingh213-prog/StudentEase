@@ -92,6 +92,24 @@ const studentData = {
             ],
             forms: [
                 {
+                    title: "UG 5th Semester Examination Form",
+                    category: "Examination Forms",
+                    date: "Check official portal",
+                    description: "Examination form for eligible UG 5th semester students of the 2024–2028 session.",
+                    fee: 50,
+                    link: "https://ppuponline.in/examination-search-open.php",
+                    type: "online"
+                },
+                {
+                    title: "CIA Payment Form",
+                    category: "CIA Payment Forms",
+                    date: "Check official portal",
+                    description: "Access the college portal to complete your CIA payment.",
+                    fee: 50,
+                    link: "https://admission.lpshahicollege.ac.in/student/login/d56a51f8-f8e2-402f-9adf-bb03734f0728",
+                    type: "online"
+                },
+                {
                     title: "Internship Registration Form",
                     date: "Check official portal",
                     description: "Online internship registration form for 5th semester students.",
@@ -167,7 +185,17 @@ const studentData = {
                     }
                 },
             ],
-            forms: [],
+            forms: [
+                {
+                    title: "UG 3rd Semester Examination Form",
+                    category: "Examination Forms",
+                    date: "Check official portal",
+                    description: "Examination form for eligible UG 3rd semester students of the 2025–2029 session.",
+                    fee: 50,
+                    link: "https://ppuponline.in/examination-search-open.php",
+                    type: "online"
+                }
+            ],
             documents: [],
             certificates: [],
             downloads: []
@@ -340,7 +368,17 @@ const studentData = {
         },
         5: {
             notices: [],
-            forms: [],
+            forms: [
+                {
+                    title: "UG 5th Semester Examination Form",
+                    category: "Examination Forms",
+                    date: "Check official portal",
+                    description: "Examination form for eligible UG 5th semester students of the 2024–2028 session.",
+                    fee: 50,
+                    link: "https://ppuponline.in/examination-search-open.php",
+                    type: "online"
+                },
+            ],
             documents: [],
             certificates: [],
             downloads: []
@@ -385,7 +423,17 @@ const studentData = {
         },
         3: {
             notices: [],
-            forms: [],
+            forms: [
+                {
+                    title: "UG 3rd Semester Examination Form",
+                    category: "Examination Forms",
+                    date: "Check official portal",
+                    description: "Examination form for eligible UG 3rd semester students of the 2025–2029 session.",
+                    fee: 50,
+                    link: "https://ppuponline.in/examination-search-open.php",
+                    type: "online"
+                }
+            ],
             documents: [],
             certificates: [],
             downloads: []
@@ -519,7 +567,17 @@ const studentData = {
         },
         5: {
             notices: [],
-            forms: [],
+            forms: [
+                {
+                    title: "UG 5th Semester Examination Form",
+                    category: "Examination Forms",
+                    date: "Check official portal",
+                    description: "Examination form for eligible UG 5th semester students of the 2024–2028 session.",
+                    fee: 50,
+                    link: "https://ppuponline.in/examination-search-open.php",
+                    type: "online"
+                },
+            ],
             documents: [],
             certificates: [],
             downloads: []
@@ -564,7 +622,17 @@ const studentData = {
         },
         3: {
             notices: [],
-            forms: [],
+            forms: [
+                {
+                    title: "UG 3rd Semester Examination Form",
+                    category: "Examination Forms",
+                    date: "Check official portal",
+                    description: "Examination form for eligible UG 3rd semester students of the 2025–2029 session.",
+                    fee: 50,
+                    link: "https://ppuponline.in/examination-search-open.php",
+                    type: "online"
+                }
+            ],
             documents: [],
             certificates: [],
             downloads: []
@@ -933,116 +1001,318 @@ document.addEventListener("click", function(event) {
 
     if (!semesterData) return;
 
-    // =========================
-// FORMS
 // =========================
+// FORMS
+ // =========================
 
-if (formsCard) {
+    if (formsCard) {
 
-    const forms = semesterData.forms;
+        const forms = semesterData.forms || [];
 
-    if (!forms.length) {
+        const scholarshipForms = [
+            {
+                title: "National Scholarship Portal (NSP)",
+                description: "Explore central government scholarship schemes.",
+                link: "https://scholarships.gov.in/Students"
+            },
+            {
+                title: "Bihar Post-Matric Scholarship (PMS)",
+                description: "Explore Bihar Post-Matric Scholarship schemes.",
+                link: "https://pmsonline.bihar.gov.in/pms/pms_online/Default.aspx"
+            }
+        ];
 
-        hubResult.innerHTML = `
-            
-            <button type="button"
-                    class="hub-back-btn"
-                    onclick="showHubServices()">
-                ← Back to Services
-            </button>
+        const formCategories = [
+            {
+                title: "Scholarship Forms",
+                icon: "🎓",
+                color: "document-purple",
+                description: "Apply for scholarships and student financial assistance."
+            },
+            {
+                title: "Examination Forms",
+                icon: "📝",
+                color: "document-green",
+                description: "Access semester examination forms and related applications."
+            },
+            {
+                title: "CIA Payment Forms",
+                icon: "💳",
+                color: "document-pink",
+                description: "Access CIA and internal assessment payment forms."
+            },
+            {
+                title: "Internship Forms",
+                icon: "💼",
+                color: "document-yellow",
+                description: "Access internship registration and related forms."
+            },
+            {
+                title: "Other Forms",
+                icon: "📁",
+                color: "document-indigo",
+                description: "Find migration, admission, registration and other important forms."
+            }
+        ];
 
-            <div class="notice-archive">
-                <h3>No forms available</h3>
-                <p>There are currently no forms for this semester.</p>
-            </div>
-        `;
+        function getFormCategory(form) {
 
-        return;
-    }
+
+            const category = (form.category || "").toLowerCase();
+            const title = (form.title || "").toLowerCase();
+            const text = category + " " + title;
+
+            if (text.includes("scholarship")) {
+                return "Scholarship Forms";
+            }
+
+            if (text.includes("cia") ||
+                text.includes("internal assessment")) {
+                return "CIA Payment Forms";
+            }
+
+            if (text.includes("internship")) {
+                return "Internship Forms";
+            }
+
+            if (text.includes("examination") ||
+                text.includes("exam form")) {
+                return "Examination Forms";
+            }
+
+            return "Other Forms";
+
+        }
+
+
+        function renderFormCategories() {
 
     hubResult.innerHTML = `
-
         <button type="button"
                 class="hub-back-btn"
                 onclick="showHubServices()">
             ← Back to Services
         </button>
 
-        <div class="notice-archive">
-
+        <div class="document-section">
             <div class="archive-header">
-
-                <div>
-                    <h3>
-                        ${semesterNames[semester]} Forms
-                    </h3>
-
-                    <p>
-                        ${session} • ${forms.length} form(s)
-                    </p>
-                </div>
-
+                <h3>${semesterNames[semester]} Forms</h3>
+                <p>${session} • Choose a form category</p>
             </div>
 
-            <div class="notice-list">
+            <div class="document-list">
+                ${formCategories.map((category, index) => {
 
-                ${forms.map(form => `
+                    const count = category.title === "Scholarship Forms"
+                        ? scholarshipForms.length
+                        : forms.filter(
+                            form => getFormCategory(form) === category.title
+                        ).length;
 
-                    <div class="notice-item">
+                    return `
+                        <div class="document-item">
+                            <div class="document-item-main">
+                                <div class="document-icon ${category.color}">
+                                    ${category.icon}
+                                </div>
 
-                        <h4>
-                            ${form.title}
-                        </h4>
+                                <div class="document-item-content">
+                                    <h4>${category.title}</h4>
+                                    <p>${category.description}</p>
+                                    <p>${count} available form(s)</p>
+                                </div>
+                            </div>
 
-                        <div class="notice-date">
-                            📅 Deadline: ${form.date}
+                            <div class="document-item-actions">
+                                <button type="button"
+                                        class="document-action-btn document-free-btn"
+                                        data-form-category="${index}">
+                                    View Forms
+                                </button>
+                            </div>
                         </div>
+                    `;
+                }).join("")}
+            </div>
+        </div>
+    `;
+
+    hubResult.onclick = function (event) {
+        const button = event.target.closest("[data-form-category]");
+        if (!button) return;
+
+        const category = formCategories[
+            Number(button.dataset.formCategory)
+        ];
+
+        if (category) {
+            renderCategoryForms(category);
+        }
+    };
+}
+
+
+        function renderCategoryForms(category) {
+
+            
+        if (category.title === "Other Forms") {
+
+            hubResult.innerHTML = `
+                <button type="button"
+                        class="hub-back-btn"
+                        id="backToFormCategories">
+                    ← Back to Forms
+                </button>
+
+                <div class="document-section">
+                    <div class="archive-header">
+                        <h3>Other Forms</h3>
+                        <p>${session} • ${semesterNames[semester]}</p>
+                    </div>
+
+                    <div class="document-list">
+                        <a href="https://ppuponline.in/migration_search.php"
+                           class="other-form-link"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Migration Form
+                        </a>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById("backToFormCategories")
+                .addEventListener("click", renderFormCategories);
+
+            return;
+        }
+
+
+
+            const categoryForms = category.title === "Scholarship Forms"
+                ? scholarshipForms
+                : forms.filter(
+                    form => getFormCategory(form) === category.title
+                );
+
+            hubResult.innerHTML = `
+
+                <button type="button"
+                        class="hub-back-btn"
+                        id="backToFormCategories">
+                    ← Back to Forms
+                </button>
+
+                <div class="document-section">
+
+                    <div class="archive-header">
+
+                        <h3>${category.title}</h3>
 
                         <p>
-                            ${form.description}
-                        </p>
-
-                        <div class="form-actions">
-
-                            <a
-                                href="${form.link}"
-                                class="form-btn form-btn-free"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                Fill Yourself
-                            </a>
-
-                            <a
-                                href="https://wa.me/?text=${encodeURIComponent(
-                                    `Hi StudentEase, I want help filling the ${form.title}.`
-                                )}"
-                                class="form-btn form-btn-paid"
-                                target="_blank"
-                                rel="noopener"
-                            >
-                                Get It Done — ₹50
-                            </a>
-
-                        </div>
-                        
-                        <p class="form-fee-note">
-                            StudentEase assistance fee: ₹50.
-                            Official university fees, if applicable, are separate.
+                            ${session} • ${semesterNames[semester]}
                         </p>
 
                     </div>
 
-                `).join("")}
+                    <div class="document-list">
 
-            </div>
+                        ${categoryForms.length
 
-        </div>
+                            ? categoryForms.map(form => `
 
-    `;
+                                <div class="document-item">
 
-    return;
-}
+                                    <div class="document-item-main">
+
+                                        <div class="document-icon ${category.color}">
+                                            ${category.icon}
+                                        </div>
+
+                                        <div class="document-item-content">
+
+                                            <h4>${form.title}</h4>
+
+                                            <p>${form.description || ""}</p>
+
+                                            ${form.date ? `
+                                                <p>Deadline: ${form.date}</p>
+                                            ` : ""}
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="document-item-actions">
+
+                                        ${form.link ? `
+
+                                            <a href="${form.link}"
+                                               class="document-action-btn document-free-btn"
+                                               target="_blank"
+                                               rel="noopener noreferrer">
+                                                Fill Yourself
+                                            </a>
+
+                                        ` : `
+
+                                            <span class="document-action-btn document-free-btn"
+                                                  aria-disabled="true">
+                                                Link Not Available
+                                            </span>
+
+                                        `}
+
+                                        <a href="https://wa.me/?text=${encodeURIComponent(
+                                            `Hi StudentEase, I want help filling the ${form.title}.`
+                                        )}"
+                                           class="document-action-btn document-paid-btn"
+                                           target="_blank"
+                                           rel="noopener noreferrer">
+                                            Get It Done — ₹50
+                                        </a>
+
+                                    </div>
+
+                                    <p class="form-fee-note">
+                                        StudentEase assistance fee: ₹50.
+                                        Official university fees, if applicable, are separate.
+                                    </p>
+
+                                </div>
+
+                            `).join("")
+
+                            : `
+
+                                <div class="notice-archive">
+
+                                    <h3>No forms available yet</h3>
+
+                                    <p>
+                                        Forms for this category will appear here
+                                        when they are added for your semester.
+                                    </p>
+
+                                </div>
+
+                            `}
+
+                    </div>
+
+                </div>
+
+            `;
+
+            document.getElementById("backToFormCategories")
+                .addEventListener("click", renderFormCategories);
+
+        }
+
+        renderFormCategories();
+
+        return;
+    }
 
 
 // =========================
@@ -1050,6 +1320,13 @@ if (formsCard) {
 // =========================
 
 if (documentsCard) {
+
+    const registrationLinks = {
+        "2024-2028": "https://oldadmission.ppuponline.in/Login.aspx",
+        "2025-2029": "https://admission.ppuponline.in/Login.aspx"
+    };
+
+    const registrationUrl = registrationLinks[session];
 
     hubResult.innerHTML = `
 
@@ -1184,7 +1461,7 @@ if (documentsCard) {
 
                     <div class="document-item-actions">
 
-                        <a href="#"
+                        <a href="https://admission.lpshahicollege.ac.in/student/login/d56a51f8-f8e2-402f-9adf-bb03734f0728"
                            class="document-action-btn document-free-btn">
                             Login & Download
                         </a>
@@ -1226,10 +1503,22 @@ if (documentsCard) {
 
                     <div class="document-item-actions">
 
-                        <a href="#"
-                           class="document-action-btn document-free-btn">
-                            Login & Download
-                        </a>
+                        ${registrationUrl
+                            ? `
+                                <a href="${registrationUrl}"
+                                    class="document-action-btn document-free-btn"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+                                     Login & Download
+                                </a>
+                              `
+                            : `
+                                <span class="document-action-btn document-free-btn"
+                                      aria-disabled="true">
+                                    Portal Not Available
+                                </span>
+                              `
+                        }
 
                         <a href="https://wa.me/?text=${encodeURIComponent(
                             `Hi StudentEase, I need help with my registration or enrollment document.`
@@ -1352,7 +1641,7 @@ if (certificatesCard) {
 
                     <div class="document-item-actions">
 
-                        <a href="#"
+                        <a href="https://ppu-internship.com/login/studentLogin"
                            class="document-action-btn document-free-btn">
                             View / Download
                         </a>
@@ -1827,12 +2116,13 @@ const notices = [
                             ${notice.description}
                         </p>
 
-                        <a
-                            href="${notice.file}"
+                       <button
+                            type="button"
                             class="notice-view"
+                            onclick="openNoticeViewer('${notice.file}')"
                         >
                             View Notice →
-                        </a>
+                        </button>
 
                     </div>
 
@@ -2238,3 +2528,112 @@ document.addEventListener("DOMContentLoaded", function () {
     displayNotices("all");
 
 });
+
+// =====================================
+// STUDENT HUB NOTICE VIEWER
+// =====================================
+
+let noticeZoomLevel = 1;
+
+function openNoticeViewer(file) {
+
+    const viewer = document.getElementById("noticeViewer");
+    const image = document.getElementById("noticeViewerImage");
+    const pdf = document.getElementById("noticeViewerPDF");
+    const download = document.getElementById("noticeDownload");
+    const openTab = document.getElementById("noticeOpenNewTab");
+
+    if (!viewer || !image || !pdf) return;
+
+    noticeZoomLevel = 1;
+
+    const filePath = file.split("?")[0].toLowerCase();
+    const isPDF = filePath.endsWith(".pdf");
+
+    download.href = file;
+    download.download = file.split("/").pop();
+
+    openTab.href = file;
+
+    if (isPDF) {
+
+        image.hidden = true;
+        pdf.hidden = false;
+        pdf.src = file;
+
+    } else {
+
+        pdf.hidden = true;
+        pdf.src = "";
+
+        image.hidden = false;
+        image.src = file;
+        image.style.transform = "scale(1)";
+    }
+
+    viewer.classList.add("active");
+    document.body.style.overflow = "hidden";
+}
+
+function zoomNotice(change) {
+
+    const image = document.getElementById("noticeViewerImage");
+
+    if (!image || image.hidden) return;
+
+    noticeZoomLevel = Math.min(
+        3,
+        Math.max(0.5, noticeZoomLevel + change)
+    );
+
+    image.style.transform = `scale(${noticeZoomLevel})`;
+}
+
+function closeNoticeViewer() {
+
+    const viewer = document.getElementById("noticeViewer");
+    const image = document.getElementById("noticeViewerImage");
+    const pdf = document.getElementById("noticeViewerPDF");
+
+    if (!viewer) return;
+
+    viewer.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+    if (image) {
+        image.src = "";
+        image.style.transform = "scale(1)";
+    }
+
+    if (pdf) {
+        pdf.src = "";
+    }
+
+    noticeZoomLevel = 1;
+}
+
+// =====================================
+// NOTICE VIEWER EXTRA CONTROLS
+// =====================================
+
+// Close viewer with Escape key
+document.addEventListener("keydown", function (event) {
+
+    if (event.key === "Escape") {
+        closeNoticeViewer();
+    }
+
+});
+
+// Close viewer when clicking outside the box
+document.getElementById("noticeViewer").addEventListener(
+    "click",
+    function (event) {
+
+        if (event.target === this) {
+            closeNoticeViewer();
+        }
+
+    }
+);

@@ -38,7 +38,7 @@
         </nav>
 
         <a href="#student-hub" class="header-button">
-            Get Started
+          Get Started
         </a>
 
     </div>
@@ -686,6 +686,19 @@
 
     </div>
 
+    
+    <!-- LEGAL -->
+    <div class="footer-column">
+
+        <h4>Legal</h4>
+
+        <a href="terms-and-conditions.html">Terms & Conditions</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="refund-policy.html">Refund & Cancellation</a>
+
+    </div>
+
+
 </div>
 
 
@@ -705,7 +718,68 @@
 
 </footer>
 
+<!-- =================================
+     STUDENT HUB NOTICE VIEWER
+================================= -->
 
+<div id="noticeViewer" class="notice-viewer-overlay">
+
+    <div class="notice-viewer-box">
+
+        <div class="notice-viewer-header">
+
+            <h3>Notice Preview</h3>
+
+            <button
+                type="button"
+                class="notice-viewer-close"
+                onclick="closeNoticeViewer()"
+                aria-label="Close notice viewer"
+            >
+                &times;
+            </button>
+
+        </div>
+
+        <div class="notice-viewer-toolbar">
+
+            <button type="button" onclick="zoomNotice(0.2)">
+                Zoom +
+            </button>
+
+            <button type="button" onclick="zoomNotice(-0.2)">
+                Zoom -
+            </button>
+
+            <a id="noticeDownload" href="#" download>
+                Download
+            </a>
+
+            <a id="noticeOpenNewTab" href="#" target="_blank" rel="noopener">
+                Open in New Tab
+            </a>
+
+        </div>
+
+        <div class="notice-viewer-content">
+
+            <img
+                id="noticeViewerImage"
+                src=""
+                alt="Student notice"
+            >
+
+            <iframe
+                id="noticeViewerPDF"
+                title="Notice PDF"
+                hidden
+            ></iframe>
+
+        </div>
+
+    </div>
+
+</div>
 
 <script src="script.js"></script>
 
