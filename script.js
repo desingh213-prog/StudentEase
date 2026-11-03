@@ -20,8 +20,8 @@ const semesterNames = {
 const studentData = {
     
     globalNotices: [
-        {
-            title: "College Holiday Notice",
+        /*{
+            title: "deepak birthday",
             date: "2 October 2026",
             category: "Academic",
             description: "College will remain closed on 2 October 2026.",
@@ -33,7 +33,7 @@ const studentData = {
                 session: "all",
                 semester: "all"
             }
-        }
+        }*/
     ],
 
 
@@ -81,7 +81,7 @@ const studentData = {
                     category: "Examination",
                     description: "Mid-Sem Test/CIA and practical examinations for UG 1st, 3rd, 5th and 7th semesters are to be completed by 30 September 2026.",
                     status: "New",
-                    file: "mid-sem-test-notice.jpeg",
+                    file: "notices/mid-sem-test-notice.jpeg",
 
                     audience: {
                         course: "BCom",
@@ -176,7 +176,7 @@ const studentData = {
                     category: "Examination",
                     description: "Mid-Sem Test/CIA and practical examinations for UG 1st, 3rd, 5th and 7th semesters are to be completed by 30 September 2026.",
                     status: "New",
-                    file: "notices for sem 1,3,5,7/mid-sem-test-notice.jpeg",
+                    file: "notices/mid-sem-test-notice.jpeg",
 
                     audience: {
                         course: "BCom",
@@ -254,7 +254,7 @@ const studentData = {
                     category: "Examination",
                     description: "Mid-Sem Test/CIA and practical examinations for UG 1st, 3rd, 5th and 7th semesters are to be completed by 30 September 2026.",
                     status: "New",
-                    file: "notices for sem 1,3,5,7/mid-sem-test-notice.jpeg",
+                    file: "notices/mid-sem-test-notice.jpeg",
 
                     audience: {
                         course: "BCom",
